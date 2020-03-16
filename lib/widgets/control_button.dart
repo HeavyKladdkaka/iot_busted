@@ -19,7 +19,7 @@ class _TurnOffButtonState extends State<ControlButton> {
         "value": _buttonValue,
         "timestamp": DateTime.now().millisecondsSinceEpoch
     });
-}
+  }
 
   bool _isOff = true;
 
