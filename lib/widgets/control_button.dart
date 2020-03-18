@@ -13,11 +13,10 @@ class _TurnOffButtonState extends State<ControlButton> {
 
   sendMessage() {
 
-    _firebaseRef.child("Button").remove();
+    //_firebaseRef.child("Button").remove();
 
-    _firebaseRef.push().update({
+    _firebaseRef.update({
         "value": _buttonValue,
-        "timestamp": DateTime.now().millisecondsSinceEpoch
     });
   }
 
