@@ -43,8 +43,6 @@ class _CameraState extends State<Camera> {
 
     _firebaseRef.once().then((DataSnapshot snapshot){
       String base64String = snapshot.value;
-      print(base64String);
-      print(base64String.split(',').last);
 
       Uint8List bytes = base64.decode(base64String.split(',').last);
 

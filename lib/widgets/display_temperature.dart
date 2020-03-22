@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +21,6 @@ class DisplayTemperatureState extends State<DisplayTemperature>{
 
 Widget build(BuildContext context){
   String temperature  = temp.toString();
-  print(temp);
   return Scaffold(
     body: 
     Row(
