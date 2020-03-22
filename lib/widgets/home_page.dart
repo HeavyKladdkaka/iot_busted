@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iot_busted/widgets/camera.dart';
 import 'package:iot_busted/widgets/display_temperature.dart';
 import 'package:iot_busted/widgets/control_button.dart';
-//import 'dart:convert';
-//import 'package:iot_busted/widgets/saved_image.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -19,10 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("IOT Busted"),
-        
-          //SavedImage(),
-          //ControlButton(), 
+        title: new Text("IOT Busted"), 
       ),
       body:_buildList(),
     );

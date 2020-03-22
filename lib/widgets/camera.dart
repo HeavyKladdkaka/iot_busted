@@ -13,7 +13,7 @@ class Camera extends StatefulWidget {
 
 class _CameraState extends State<Camera> {
 
-  Future<Uint8List> _getImage() async{
+  /*Future<Uint8List> _getImage() async{
 
     _bytes = await fetchImageString();
 
@@ -31,25 +31,38 @@ class _CameraState extends State<Camera> {
       Uint8List _bytes = base64.decode(base64String.split(',').last);
 
       return _bytes;
-    });
+    });*/
 
   var _firebaseRef = FirebaseDatabase().reference().child('CAMERA');
-  Image image = new Image.asset('assets/images/mountains.jpg');
+  Image image;
   Uint8List _bytes;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _firebaseRef.once().then((DataSnapshot snapshot){
+      String base64String = snapshot.value;
+      print(base64String);
+      print(base64String.split(',').last);
+
+      Uint8List bytes = base64.decode(base64String.split(',').last);
+
+      setState(() {
+        _bytes = bytes;
+      });
+    });
+  }
+  
 
   @override
   Widget build(BuildContext context) {
 
-    return new Flex(
-      direction: Axis.horizontal,
-      children: [
-        Expanded(
-          child: SizedBox(
-            height: 200.0,
-            child: ListView(
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
-                FutureBuilder(
+    return new Container(child: _bytes == null 
+      ? new Text('No data')
+      : new Image.memory(_bytes),
+    );
+                /*FutureBuilder(
                   future: _getImage(),
                   builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
                     if (snapshot.hasData) {
@@ -57,16 +70,10 @@ class _CameraState extends State<Camera> {
                     }
                     return CircularProgressIndicator();
                   },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
+                ),*/
   }
 
-  Widget _imageBuilder(Uint8List data){
+  /*Widget _imageBuilder(Uint8List data){
     return Image.memory(data);
-  }
+  }*/
 }
