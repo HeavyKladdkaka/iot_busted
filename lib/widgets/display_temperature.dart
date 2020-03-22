@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -7,16 +9,19 @@ class DisplayTemperature extends StatefulWidget{
 }
 
 class DisplayTemperatureState extends State<DisplayTemperature>{
+
   var databaseReference = FirebaseDatabase.instance.reference();
-  var temp;  
+  var temp;
 
   @override
   void initState() {
     super.initState();
+    databaseReference.onValue.listen((Event event){
+      temp = event.snapshot.value['TEMPERATURE'];
+    });
   }
 
 Widget build(BuildContext context){
-  getData();
   String temperature  = temp.toString();
   print(temp);
   return Scaffold(
@@ -50,12 +55,5 @@ Widget build(BuildContext context){
    ]), 
   );
 
-}
-
-void getData(){
-
-  databaseReference.once().then((DataSnapshot snapshot){
-     temp = snapshot.value['TEMPERATURE'];
-  });
 }
 }

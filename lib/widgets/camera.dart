@@ -52,8 +52,16 @@ class _CameraState extends State<Camera> {
         _bytes = bytes;
       });
     });
+
+    _firebaseRef.onValue.listen((Event event){
+      String base64String = event.snapshot.value;
+      Uint8List bytes = base64.decode(base64String.split(',').last);
+
+      setState(() {
+        _bytes = bytes;
+      });
+    });
   }
-  
 
   @override
   Widget build(BuildContext context) {
