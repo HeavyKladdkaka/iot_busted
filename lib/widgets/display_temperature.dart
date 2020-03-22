@@ -8,14 +8,21 @@ class DisplayTemperature extends StatefulWidget{
 
 class DisplayTemperatureState extends State<DisplayTemperature>{
 
-  var databaseReference = FirebaseDatabase.instance.reference();
+  var databaseReference = FirebaseDatabase.instance.reference().child('TEMPERATURE');
   var temp;
 
   @override
   void initState() {
     super.initState();
+    databaseReference.once().then((DataSnapshot snapshot){
+      setState(() {
+        temp = snapshot.value;
+      });
+    });
     databaseReference.onValue.listen((Event event){
-      temp = event.snapshot.value['TEMPERATURE'];
+      setState(() {
+        temp = event.snapshot.value;
+      });
     });
   }
 
