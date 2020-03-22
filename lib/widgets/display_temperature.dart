@@ -7,7 +7,7 @@ class DisplayTemperature extends StatefulWidget{
 }
 
 class DisplayTemperatureState extends State<DisplayTemperature>{
-  var DatabaseReference = FirebaseDatabase.instance.reference();
+  var databaseReference = FirebaseDatabase.instance.reference();
   var temp;  
 
   @override
@@ -41,7 +41,7 @@ Widget build(BuildContext context){
     temperature,
       
         style: new TextStyle(
-          fontSize: 50.0,
+          fontSize: 24.0,
         ),
       ),
     ),
@@ -54,7 +54,7 @@ Widget build(BuildContext context){
 
 void getData(){
 
-  DatabaseReference.once().then((DataSnapshot snapshot){
+  databaseReference.once().then((DataSnapshot snapshot){
      temp = snapshot.value['TEMPERATURE'];
   });
 }

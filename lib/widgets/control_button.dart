@@ -24,15 +24,13 @@ class _TurnOffButtonState extends State<ControlButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
+    return FloatingActionButton.extended(
         onPressed: _toggleOnOff,
         label: (_isOff ? Text('Turn Off') : Text('Turn On')),
         icon: Icon(Icons.power_settings_new),
         backgroundColor: (_isOff ? Colors.pink : Colors.green[500]),
         
-      ),
-    );
+      );
   }
 
   void _toggleOnOff() {

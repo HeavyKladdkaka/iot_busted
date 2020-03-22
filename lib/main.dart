@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:iot_busted/widgets/camera.dart';
 import './widgets/home_page.dart';
 
 void main() => runApp(MyApp());

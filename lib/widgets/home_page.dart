@@ -1,6 +1,5 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:iot_busted/widgets/saved_image.dart';
+import 'package:iot_busted/widgets/camera.dart';
 import 'package:iot_busted/widgets/display_temperature.dart';
 import 'package:iot_busted/widgets/control_button.dart';
 //import 'dart:convert';
@@ -30,6 +29,17 @@ class _HomePageState extends State<HomePage> {
   }
   
   Widget _buildList() {
-    return new ControlButton(); //new DisplayTemperature() //new Saved_image();
+    return ListView(
+      padding: const EdgeInsets.all(8),
+      children: <Widget>[
+        SizedBox(
+          width: 10.0,
+          height: 100.0,
+          child: DisplayTemperature(),
+        ),
+        Camera(),
+        ControlButton(),
+      ],
+    );
   }
 }
