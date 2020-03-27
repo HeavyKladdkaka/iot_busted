@@ -35,14 +35,14 @@ Widget build(BuildContext context){
         Expanded(
         child: Container(
         height: 100.0,
-        width: 100.0,
+        width: 50,
         decoration: BoxDecoration(
           border: Border.all(
             width: 2.0,
             style: BorderStyle.solid,
             color: Colors.lightBlue[300]
           ),
-          borderRadius: BorderRadius.circular(100.0),
+          borderRadius: BorderRadius.circular(50),
           color: Colors.lightBlue[300],
       ),
     child: Center(

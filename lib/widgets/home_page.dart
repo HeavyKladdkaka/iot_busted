@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.all(8),
       children: <Widget>[
         SizedBox(
-          width: 10.0,
+          width: 100.0,
           height: 100.0,
           child: DisplayTemperature(),
         ),
